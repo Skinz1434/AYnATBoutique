@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AYnAT Boutique Mock Assets</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f8f8f8 url('../assets/images/farmhouse-pattern.svg');
+    background-size: 400px 400px;
+    margin: 0;
+    padding: 20px;
+  }
+  .card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    perspective: 1000px;
+  }
+  .mock-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.3s;
+  }
+  .mock-card:hover {
+    transform: rotateX(6deg) rotateY(-4deg);
+  }
+  .embroidered {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.8);
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #a07caf;
+  }
+  .mock-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+    pointer-events: none;
+  }
+  .mock-image {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .info {
+    text-align: center;
+  }
+  .info h4 {
+    margin: 10px 0 5px;
+  }
+  .info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<h2>AYnAT Boutique Mock Asset Gallery</h2>
+<p>The following cards illustrate a pastel-inspired aesthetic for showcasing various apparel categories.</p>
+<div class="card-wrapper">
+  <div class="mock-card">
+    <div class="mock-image" style="background:#d6e8ff;">
+      <!-- Simplistic romper shape -->
+      <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2h24l4 12h8v16l-8 4v28H16V34l-8-4V14h8L20 2z" fill="#fff" stroke="#aec6ff" stroke-width="2"/>
+        <text x="32" y="45" text-anchor="middle" font-size="8" fill="#aec6ff">Ay & At</text>
+      </svg>
+    </div>
+    <div class="info">
+      <h4>Pastel Romper</h4>
+      <p>Baby / Lavender, Mint, Pink<br>100% Cotton</p>
+    </div>
+  </div>
+  <div class="mock-card">
+    <span class="embroidered">Embroidery</span>
+    <div class="mock-image" style="background:#ffe8f2;">
+      <!-- Simplistic toddler dress -->
+      <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 4l12 8h8v12l-8 24v10H20V48L12 24V12h8l12-8z" fill="#fff" stroke="#f5b2d9" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="info">
+      <h4>Toddler Dress</h4>
+      <p>Toddler / Blush, Mint<br>Soft Jersey</p>
+    </div>
+  </div>
+  <div class="mock-card">
+    <div class="mock-image" style="background:#e8fff8;">
+      <!-- Children apparel set -->
+      <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4h24v16H20zM14 20h36v12H14zM16 32h32v28H16z" fill="#fff" stroke="#b2f5dd" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="info">
+      <h4>Kids Set</h4>
+      <p>Child / Soft Blue, Yellow<br>Cotton Blend</p>
+    </div>
+  </div>
+  <div class="mock-card">
+    <div class="mock-image" style="background:#fef6d8;">
+      <!-- Adult hoodie -->
+      <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 14h24l4 10v26H16V24l4-10z" fill="#fff" stroke="#eadf9a" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="info">
+      <h4>Classic Hoodie</h4>
+      <p>Adult / Neutral, Slate<br>French Terry</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
