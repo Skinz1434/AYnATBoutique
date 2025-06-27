@@ -35,7 +35,11 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(180deg, #faf9f7 0%, #f7cacd 100%);
+            background: linear-gradient(180deg, #faf9f7 0%, #f7cacd 100%),
+                        url('assets/images/leaf-motif.svg');
+            background-attachment: fixed;
+            background-size: cover, 200px;
+            background-repeat: no-repeat, repeat;
             color: var(--ayat-graphite);
             line-height: 1.6;
             overflow-x: hidden;
@@ -55,7 +59,7 @@
         .seasonal-element {
             position: absolute;
             animation: float 15s infinite ease-in-out;
-            opacity: 0.1;
+            opacity: 0.05;
         }
 
         @keyframes float {
@@ -113,6 +117,15 @@
             margin-top: 20px;
         }
 
+        .hero-watermark {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 180px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -143,22 +156,25 @@
             letter-spacing: 2px;
         }
 
+        .logo-ay,
+        .logo-at {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 1.2s forwards;
+        }
+
         .logo-ay {
             color: var(--ayat-pastel-green);
-            display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
         }
 
         .logo-at {
             color: var(--ayat-soft-pink);
-            display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
-            animation-delay: 0.5s;
+            animation-delay: 0.3s;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         header p {
@@ -766,8 +782,10 @@
             <!-- Primary boutique logo -->
             <img src="assets/logos/AynAtBoutique.png" alt="Ay and At Boutique" class="primary-logo">
             <h1><span class="logo-ay">Ay</span> & <span class="logo-at">At</span> Boutique</h1>
-            <p>Sweet Southern Styles for Little Moments & Big Memories</p>
+            <p>Sweet Southern Styles for Life's Little Moments</p>
         </div>
+        <!-- Decorative watermark logo -->
+        <img src="assets/logos/AYnATLogo2.png" alt="Cat and Dinosaur logo" class="hero-watermark">
     </header>
 
     <!-- Navigation -->
@@ -783,12 +801,11 @@
 
     <!-- Story Section -->
     <section id="story" class="story reveal">
-        <h2>Our Story – A Mother's Dream</h2>
+        <h2>Our Story – Craftsmanship & Care</h2>
         <p>
-            Ay & At Boutique began as a heartfelt dream, lovingly stitched together by a mother inspired by her two children, Aydan and Atley. 
-            Raised in Louisiana, her farmhouse-chic style and dedication to craftsmanship are woven into every seasonal collection. 
-            Each piece celebrates family, heritage, and the joy of motherhood. From our family to yours, we create clothing that captures 
-            those precious moments that make childhood magical.
+            Ay & At Boutique blossomed from a love of creating meaningful keepsakes inspired by our Louisiana farmhouse roots.
+            Every collection reflects warm southern charm and meticulous attention to detail,
+            celebrating family heritage and the sweet moments that make childhood magical.
         </p>
     </section>
 
@@ -862,10 +879,10 @@
 
     <!-- Quality Section -->
     <section id="quality" class="quality-section reveal">
-        <h2>Commitment to Exceptional Quality & Love</h2>
+        <h2>Commitment to Exceptional Quality &amp; Care</h2>
         <p>
-            We believe that great quality begins with a mother's touch. Our clothing is created from premium fabrics 
-            and carefully made to last through your family's most memorable moments. Customers appreciate the detail 
+            We believe great quality starts with thoughtful hands. Our clothing is crafted from premium fabrics and
+            carefully made to last through your family's most memorable moments. Customers appreciate the detail
             and genuine care found in every stitch.
         </p>
         <div class="quality-badges">
@@ -890,11 +907,10 @@
 
     <!-- Personal Message -->
     <section id="personal-message" class="personal-message reveal">
-        <h2>A Mother's Heart</h2>
+        <h2>A Personal Note</h2>
         <p>
-            "From the moment I became a mother, I knew that the love I felt for my children would inspire something truly special. 
-            Ay & At Boutique is my way of sharing that love with your family, creating clothing that captures the joy of childhood 
-            and the timeless charm of our Louisiana farmhouse lifestyle."
+            "Ay & At Boutique is my way of sharing timeless designs inspired by our Louisiana farmhouse lifestyle.
+            Each piece is created with care, capturing the joy and wonder of childhood with a touch of southern elegance."
         </p>
         <div class="signature">– Kimberly</div>
     </section>
@@ -964,13 +980,13 @@
             const container = document.getElementById('seasonal-elements');
             const emojis = ['🌸', '🦖', '💕', '🌿'];
             
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 6; i++) {
                 const element = document.createElement('div');
                 element.className = 'seasonal-element';
                 element.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 element.style.left = Math.random() * 100 + '%';
                 element.style.animationDelay = Math.random() * 15 + 's';
-                element.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                element.style.fontSize = (Math.random() * 15 + 15) + 'px';
                 container.appendChild(element);
             }
         }
