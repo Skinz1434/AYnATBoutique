@@ -25,6 +25,10 @@
             --ayat-graphite: #4A4A4A;
             --ayat-chalkboard: #2B2B2B;
             --ayat-sun-gold: #F2E3B3;
+            /* additional pastels for refined gradients */
+            --ayat-lavender: #D6C5E9;
+            --ayat-baby-blue: #AEDFF7;
+            --ayat-cream: #FCF8F3;
         }
 
         * {
@@ -108,6 +112,10 @@
             width: 220px;
             max-width: 60%;
             height: auto;
+            /* blend white background of logo with header gradient */
+            mix-blend-mode: multiply;
+            display: block;
+            margin: 0 auto 20px;
         }
 
         .secondary-logo {
@@ -117,12 +125,29 @@
             margin-top: 20px;
         }
 
+        .footer-logo {
+            width: 90px;
+            max-width: 30%;
+            height: auto;
+            margin: 0 auto 10px;
+        }
+
         .hero-watermark {
             position: absolute;
             bottom: 20px;
             right: 20px;
-            width: 180px;
-            opacity: 0.1;
+            width: 220px;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* small cat & dino emblem for header corners */
+        .corner-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            opacity: 0.25;
             pointer-events: none;
         }
 
@@ -278,20 +303,25 @@
 
         /* Story Section */
         .story {
-            background: white;
+            /* soft gradient reduces large white areas */
+            background: linear-gradient(135deg,
+                        var(--ayat-cream) 0%,
+                        rgba(247, 202, 205, 0.3) 100%);
             border-radius: 20px;
             padding: 60px 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             position: relative;
             overflow: hidden;
         }
 
         .story::before {
-            content: '🦖💕';
+            content: '';
             position: absolute;
             top: 20px;
             right: 20px;
-            font-size: 2em;
+            width: 60px;
+            height: 60px;
+            background: url('assets/logos/AYnATLogo2.png') no-repeat center/contain;
             opacity: 0.2;
         }
 
@@ -319,6 +349,19 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             position: relative;
+            /* decorative brand character */
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background: url('assets/logos/AYnATLogo2.png') no-repeat center/contain;
+            opacity: 0.4;
+            pointer-events: none;
         }
 
         .feature-card:hover {
@@ -578,10 +621,12 @@
 
         /* Newsletter */
         .newsletter {
-            background: white;
+            background: linear-gradient(135deg,
+                        var(--ayat-baby-blue) 0%,
+                        var(--ayat-cream) 100%);
             border-radius: 20px;
             padding: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             max-width: 600px;
             margin: 50px auto;
         }
@@ -618,6 +663,8 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            /* subtle depth */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .newsletter-form button:hover {
@@ -725,6 +772,10 @@
             .secondary-logo {
                 width: 80px;
             }
+
+            .corner-logo {
+                width: 60px;
+            }
         }
 
         /* Loading Animation */
@@ -778,10 +829,10 @@
 
     <!-- Header -->
     <header>
+        <img src="assets/logos/AYnATLogo2.png" alt="Ay &amp; At character" class="corner-logo">
         <div class="logo-container">
-            <!-- Primary boutique logo -->
+            <!-- Primary text-based boutique logo -->
             <img src="assets/logos/AynAtBoutique.png" alt="Ay and At Boutique" class="primary-logo">
-            <h1><span class="logo-ay">Ay</span> & <span class="logo-at">At</span> Boutique</h1>
             <p>Sweet Southern Styles for Life's Little Moments</p>
         </div>
         <!-- Decorative watermark logo -->
@@ -941,6 +992,8 @@
             <h3 style="font-family: 'Dancing Script', cursive; font-size: 2em; margin-bottom: 20px;">
                 <span class="logo-ay">Ay</span> & <span class="logo-at">At</span> Boutique
             </h3>
+            <!-- Character logo reinforces branding -->
+            <img src="assets/logos/AYnATLogo2.png" alt="Cat and Dinosaur" class="footer-logo">
             <!-- Small embroidery-style logo -->
             <img src="assets/logos/est2025.png" alt="Established 2025" class="secondary-logo">
             <p>Stay connected for stories, behind-the-scenes moments, and early access to our seasonal launches.</p>
