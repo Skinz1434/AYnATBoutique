@@ -12,6 +12,10 @@
             src: url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
             font-display: swap;
         }
+
+        /* Asset paths:
+           Logos stored in /assets/logos
+           Additional graphics in /assets/images */
         
         /* Brand Variables */
         :root {
@@ -31,7 +35,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--ayat-warm-white);
+            background: linear-gradient(180deg, #faf9f7 0%, #f7cacd 100%);
             color: var(--ayat-graphite);
             line-height: 1.6;
             overflow-x: hidden;
@@ -63,10 +67,10 @@
         header {
             position: relative;
             background: linear-gradient(135deg, rgba(164, 212, 174, 0.9), rgba(247, 202, 205, 0.9)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23FAF9F7" width="1200" height="600"/><circle cx="200" cy="150" r="80" fill="%23A4D4AE" opacity="0.2"/><circle cx="1000" cy="450" r="120" fill="%23F7CACD" opacity="0.2"/></svg>');
+                        url('assets/images/farmhouse-pattern.svg');
             background-size: cover;
             background-position: center;
-            padding: 120px 20px;
+            padding: 160px 20px 120px;
             text-align: center;
             color: white;
             overflow: hidden;
@@ -96,6 +100,19 @@
             animation: fadeInUp 1s ease-out;
         }
 
+        .primary-logo {
+            width: 220px;
+            max-width: 60%;
+            height: auto;
+        }
+
+        .secondary-logo {
+            width: 120px;
+            max-width: 40%;
+            height: auto;
+            margin-top: 20px;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -105,6 +122,17 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         header h1 {
@@ -382,7 +410,9 @@
 
         /* Quality Section */
         .quality-section {
-            background: linear-gradient(135deg, rgba(164, 212, 174, 0.05), rgba(247, 202, 205, 0.05));
+            background: linear-gradient(135deg, rgba(164, 212, 174, 0.05), rgba(247, 202, 205, 0.05)),
+                        url('assets/images/farmhouse-pattern.svg');
+            background-size: cover;
             border-radius: 20px;
             padding: 60px 40px;
             text-align: center;
@@ -671,6 +701,14 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .primary-logo {
+                width: 160px;
+            }
+
+            .secondary-logo {
+                width: 80px;
+            }
         }
 
         /* Loading Animation */
@@ -725,6 +763,8 @@
     <!-- Header -->
     <header>
         <div class="logo-container">
+            <!-- Primary boutique logo -->
+            <img src="assets/logos/AynAtBoutique.png" alt="Ay and At Boutique" class="primary-logo">
             <h1><span class="logo-ay">Ay</span> & <span class="logo-at">At</span> Boutique</h1>
             <p>Sweet Southern Styles for Little Moments & Big Memories</p>
         </div>
@@ -742,7 +782,7 @@
     </nav>
 
     <!-- Story Section -->
-    <section id="story" class="story">
+    <section id="story" class="story reveal">
         <h2>Our Story – A Mother's Dream</h2>
         <p>
             Ay & At Boutique began as a heartfelt dream, lovingly stitched together by a mother inspired by her two children, Aydan and Atley. 
@@ -753,7 +793,7 @@
     </section>
 
     <!-- Collections Section -->
-    <section id="collections">
+    <section id="collections" class="reveal">
         <h2>Curated Seasonal Collections</h2>
         <div class="features">
             <div class="feature-card">
@@ -786,7 +826,7 @@
     </section>
 
     <!-- Showcase Slider -->
-    <section id="showcase">
+    <section id="showcase" class="reveal">
         <h2>Embroidery Showcase</h2>
         <div class="slider-container">
             <div class="slider">
@@ -821,7 +861,7 @@
     </section>
 
     <!-- Quality Section -->
-    <section id="quality" class="quality-section">
+    <section id="quality" class="quality-section reveal">
         <h2>Commitment to Exceptional Quality & Love</h2>
         <p>
             We believe that great quality begins with a mother's touch. Our clothing is created from premium fabrics 
@@ -849,7 +889,7 @@
     </section>
 
     <!-- Personal Message -->
-    <section id="personal-message" class="personal-message">
+    <section id="personal-message" class="personal-message reveal">
         <h2>A Mother's Heart</h2>
         <p>
             "From the moment I became a mother, I knew that the love I felt for my children would inspire something truly special. 
@@ -885,6 +925,8 @@
             <h3 style="font-family: 'Dancing Script', cursive; font-size: 2em; margin-bottom: 20px;">
                 <span class="logo-ay">Ay</span> & <span class="logo-at">At</span> Boutique
             </h3>
+            <!-- Small embroidery-style logo -->
+            <img src="assets/logos/est2025.png" alt="Established 2025" class="secondary-logo">
             <p>Stay connected for stories, behind-the-scenes moments, and early access to our seasonal launches.</p>
             
             <div class="social-links">
@@ -969,6 +1011,19 @@
             const scrolled = window.pageYOffset;
             const header = document.querySelector('header');
             header.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Reveal sections on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
